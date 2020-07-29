@@ -6,3 +6,11 @@ export const Wrapper = styled.div`
   align-items: "center";
   justify-content: "center";
 `;
+
+export const WrapperRow = styled.div`
+  display: "flex";
+  flex-direction: row;
+  align-items: "center";
+  text-align: center;
+  justify-content: space-around;
+`;

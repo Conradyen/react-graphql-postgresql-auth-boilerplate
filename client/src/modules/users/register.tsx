@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { useMutation, gql } from "@apollo/client";
 import { Wrapper } from "../../components/Wrapper";
 import { useHistory } from "react-router-dom";
+import { FormGroup, FormControl } from "react-bootstrap";
+import { Label, Paper, Button } from "../../components";
 
 const REGISTER_MUTATION = gql`
   mutation registerMutation(
@@ -21,7 +23,7 @@ const REGISTER_MUTATION = gql`
 `;
 
 export const Register: React.FC<{}> = () => {
-  const [userRegister, { data }] = useMutation(REGISTER_MUTATION);
+  const [userRegister] = useMutation(REGISTER_MUTATION);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -57,45 +59,45 @@ export const Register: React.FC<{}> = () => {
 
   return (
     <Wrapper>
-      <div>
-        <input
-          type="text"
-          name="firstName"
-          placeholder="firstName"
-          value={firstName}
-          onChange={handleFirstNameChange}
-        />
-      </div>
-      <div>
-        <input
-          type="LastName"
-          name="LastName"
-          placeholder="LastName"
-          value={lastName}
-          onChange={handleLastNameChange}
-        />
-      </div>
-      <div>
-        <input
-          type="text"
-          name="email"
-          placeholder="email"
-          value={email}
-          onChange={handleEmailChange}
-        />
-      </div>
-      <div>
-        <input
-          type="password"
-          name="password"
-          placeholder="password"
-          value={password}
-          onChange={handlePasswordChange}
-        />
-      </div>
-      <div>
-        <button onClick={handelLoginSubmit}>Register</button>
-      </div>
+      <Paper>
+        <form onSubmit={handelLoginSubmit}>
+          <FormGroup controlId="firstName">
+            <Label>First Name</Label>
+            <FormControl
+              autoFocus
+              type="firstName"
+              value={firstName}
+              onChange={handleFirstNameChange}
+            />
+          </FormGroup>
+          <FormGroup controlId="lastName">
+            <Label>Last Name</Label>
+            <FormControl
+              value={lastName}
+              onChange={handleLastNameChange}
+              type="lastName"
+            />
+          </FormGroup>
+          <FormGroup controlId="email">
+            <Label>Email</Label>
+            <FormControl
+              autoFocus
+              type="email"
+              value={email}
+              onChange={handleEmailChange}
+            />
+          </FormGroup>
+          <FormGroup controlId="password">
+            <Label>Password</Label>
+            <FormControl
+              value={password}
+              onChange={handlePasswordChange}
+              type="password"
+            />
+          </FormGroup>
+          <Button>Login</Button>
+        </form>
+      </Paper>
     </Wrapper>
   );
 };

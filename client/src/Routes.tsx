@@ -3,7 +3,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { Me } from "./modules/users/me";
 import { Login } from "./modules/users/login";
 import { Register } from "./modules/users/register";
-import { Header } from "./components/Header";
+import { Header } from "./components";
 
 export default function Routes() {
   return (

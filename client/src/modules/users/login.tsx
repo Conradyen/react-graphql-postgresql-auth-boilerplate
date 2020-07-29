@@ -4,6 +4,8 @@ import { useMutation, gql } from "@apollo/client";
 import { Wrapper } from "../../components/Wrapper";
 import { useHistory } from "react-router-dom";
 import { ME_QUERY } from "../../graphql/query/mequery";
+import { FormGroup, FormControl } from "react-bootstrap";
+import { Label, Paper, Button } from "../../components";
 
 const LOGIN_MUTATION = gql`
   mutation LoginMutation($email: String!, $password: String!) {
@@ -48,27 +50,28 @@ export const Login: React.FC<{}> = () => {
 
   return (
     <Wrapper>
-      <div>
-        <input
-          type="text"
-          name="email"
-          placeholder="email"
-          value={email}
-          onChange={handleEmailChange}
-        />
-      </div>
-      <div>
-        <input
-          type="password"
-          name="password"
-          placeholder="password"
-          value={password}
-          onChange={handlePasswordChange}
-        />
-      </div>
-      <div>
-        <button onClick={handelLoginSubmit}>Login</button>
-      </div>
+      <Paper>
+        <form onSubmit={handelLoginSubmit}>
+          <FormGroup controlId="email">
+            <Label>Email</Label>
+            <FormControl
+              autoFocus
+              type="email"
+              value={email}
+              onChange={handleEmailChange}
+            />
+          </FormGroup>
+          <FormGroup controlId="password">
+            <Label>Password</Label>
+            <FormControl
+              value={password}
+              onChange={handlePasswordChange}
+              type="password"
+            />
+          </FormGroup>
+          <Button>Login</Button>
+        </form>
+      </Paper>
     </Wrapper>
   );
 };

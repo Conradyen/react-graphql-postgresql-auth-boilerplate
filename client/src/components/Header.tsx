@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useQuery } from "@apollo/client";
 import { Link } from "react-router-dom";
 import { ME_QUERY } from "../graphql/query/mequery";
+import { WrapperRow } from "./Wrapper";
 
 const Container = styled.div`
   height: 50;
@@ -12,6 +13,7 @@ const Container = styled.div`
   /* flex-direction: row; */
   justify-content: space-around;
   padding: 10;
+  align-items: "center";
 `;
 
 export const Header = () => {
